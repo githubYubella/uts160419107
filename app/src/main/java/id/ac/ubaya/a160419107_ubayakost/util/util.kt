@@ -14,7 +14,7 @@ fun ImageView.loadImage(url:String, progressBar: ProgressBar){
         .resize(400,400)
         .centerCrop()
         .error(R.drawable.ic_baseline_error_24)
-        .into(this, object: Callback {
+        .into(this, object: Callback   {
             override fun onSuccess() {
                 progressBar.visibility= View.GONE
             }
