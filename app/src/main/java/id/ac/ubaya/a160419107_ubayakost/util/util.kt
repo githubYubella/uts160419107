@@ -17,6 +17,7 @@ fun ImageView.loadImage(url:String, progressBar: ProgressBar){
         .into(this, object: Callback   {
             override fun onSuccess() {
                 progressBar.visibility= View.GONE
+//                gone
             }
 
             override fun onError(e: Exception?) {
