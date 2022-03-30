@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/itemHomeNav">
+
+    <fragment
+        android:id="@+id/itemHomeNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.dashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/itemListKostNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.kostListFragment"
+        android:label="fragment_kost_list"
+        tools:layout="@layout/fragment_kost_list" >
+        <action
+            android:id="@+id/action_itemListKost_to_kostDetailFragment"
+            app:destination="@id/kostDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProfileNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.profileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/kostDetailFragment"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.kostDetailFragment"
+        android:label="fragment_kost_detail"
+        tools:layout="@layout/fragment_kost_detail" >
+        <argument
+            android:name="kost_id_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemHelpNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.helpFragment"
+        android:label="helpFragment" />
+</navigation>

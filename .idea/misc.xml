@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.124" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2325" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/activity_main.xml" value="0.20697463768115942" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_dashboard.xml" value="0.20697463768115942" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_help.xml" value="0.21784420289855072" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_kost_detail.xml" value="0.25" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_kost_list.xml" value="0.20697463768115942" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_list_kost.xml" value="0.20697463768115942" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/fragment_profile.xml" value="0.20697463768115942" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/help.xml" value="0.21784420289855072" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/kost_list_item.xml" value="0.4" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_bottom.xml" value="0.25416666666666665" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_navigation.xml" value="0.11458333333333333" />
+        <entry key="..\:/6/ANMP/uts2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.124" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
