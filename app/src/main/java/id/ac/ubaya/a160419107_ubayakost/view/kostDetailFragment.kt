@@ -7,14 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import id.ac.ubaya.a160419107_ubayakost.R
+import id.ac.ubaya.a160419107_ubayakost.model.KostUbaya
 import id.ac.ubaya.a160419107_ubayakost.util.loadImage
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_kost_detail.*
+import kotlinx.android.synthetic.main.fragment_pesan.*
 import kotlinx.android.synthetic.main.kost_list_item.*
+import kotlinx.android.synthetic.main.kost_list_item.view.*
 
 class kostDetailFragment : Fragment() {
     private lateinit var viewModel: DetailViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +53,7 @@ class kostDetailFragment : Fragment() {
                 detailFasilitas.setText(it.fasilitas)
                 detailJenis.setText(it.jenis)
                 detailAlamat.setText(it.alamat)
+                detailId.setText(it.id.toString())
                 imageView2.loadImage(it.photoUrl.toString(), progressBarDetail)
 
 
@@ -57,9 +63,18 @@ class kostDetailFragment : Fragment() {
 
         }
         buttonPesan.setOnClickListener {
-            val builder = AlertDialog.Builder(context)
-            builder.setTitle("Androidly Alert")
-            builder.show()
+//            val builder = AlertDialog.Builder(context)
+//            builder.setTitle("Androidly Alert")
+//            builder.show()
+
+
+                val namaKos= detailNamaKos.text.toString()
+                val harga = detailHarga.text.toString()
+                val id = detailId.text.toString()
+                val action = kostDetailFragmentDirections.actionKostDetailFragmentToPesanFragment(id.toInt())
+                Navigation.findNavController(it).navigate(action)
+
+
         }
 
     }
