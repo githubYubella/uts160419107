@@ -56,4 +56,9 @@
         android:name="id.ac.ubaya.a160419107_ubayakost.view.bayarFragment"
         android:label="fragment_bayar"
         tools:layout="@layout/fragment_bayar" />
+    <fragment
+        android:id="@+id/itemCaraPakai"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.caraPakaiFragment"
+        android:label="fragment_cara_pakai"
+        tools:layout="@layout/fragment_cara_pakai" />
 </navigation>

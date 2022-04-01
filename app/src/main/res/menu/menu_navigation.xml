@@ -22,4 +22,9 @@
         android:icon="@drawable/ic_baseline_help_24"
         android:title="Help"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/itemCaraPakai"
+        android:icon="@drawable/ic_baseline_touch_app_24"
+        android:title="itemCaraPakai"
+        app:showAsAction="always" />
 </menu>
