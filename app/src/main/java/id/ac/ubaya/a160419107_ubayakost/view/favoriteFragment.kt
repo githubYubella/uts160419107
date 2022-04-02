@@ -8,23 +8,26 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.a160419107_ubayakost.R
+import id.ac.ubaya.a160419107_ubayakost.viewmodel.FavoriteViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
 
-class kostListFragment : Fragment() {
-    private lateinit var viewModel: ListViewModel
-    private val kostListAdapter = kostListAdapter(arrayListOf())
+
+class favoriteFragment : Fragment() {
+
+    private lateinit var viewModel: FavoriteViewModel
+    private val kostListAdapter = kostFavoriteAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kost_list, container, false)
+        return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel= ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel= ViewModelProvider(this).get(FavoriteViewModel::class.java)
         viewModel.refresh()
 
         recyclerViewFav.layoutManager = LinearLayoutManager(context)

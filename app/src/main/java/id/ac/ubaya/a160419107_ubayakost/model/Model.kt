@@ -15,5 +15,7 @@ data class KostUbaya(
     @SerializedName("harga")
     val harga:String?,
     @SerializedName("photoUrl")
-    val photoUrl:String?
+    val photoUrl:String?,
+    val rekening:String?,
+    val atas_nama:String
 )

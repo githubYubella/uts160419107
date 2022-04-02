@@ -3,32 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/itemHomeNav">
-
-    <fragment
-        android:id="@+id/itemHomeNav"
-        android:name="id.ac.ubaya.a160419107_ubayakost.view.dashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+    app:startDestination="@id/itemListKostNav">
     <fragment
         android:id="@+id/itemListKostNav"
         android:name="id.ac.ubaya.a160419107_ubayakost.view.kostListFragment"
-        android:label="fragment_kost_list"
-        tools:layout="@layout/fragment_kost_list" >
+        android:label="List Kost"
+        tools:layout="@layout/fragment_kost_list">
         <action
-            android:id="@+id/action_itemListKost_to_kostDetailFragment"
+            android:id="@+id/actionItemListKostToKostDetailFragment"
             app:destination="@id/kostDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/itemProfileNav"
-        android:name="id.ac.ubaya.a160419107_ubayakost.view.profileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
         android:id="@+id/kostDetailFragment"
         android:name="id.ac.ubaya.a160419107_ubayakost.view.kostDetailFragment"
-        android:label="fragment_kost_detail"
-        tools:layout="@layout/fragment_kost_detail" >
+        android:label="Detail Kost"
+        tools:layout="@layout/fragment_kost_detail">
         <argument
             android:name="kost_id_id"
             app:argType="integer" />
@@ -37,15 +26,12 @@
             app:destination="@id/pesanFragment" />
     </fragment>
     <fragment
-        android:id="@+id/itemHelpNav"
-        android:name="id.ac.ubaya.a160419107_ubayakost.view.helpFragment"
-        android:label="helpFragment" />
-    <fragment
         android:id="@+id/pesanFragment"
         android:name="id.ac.ubaya.a160419107_ubayakost.view.pesanFragment"
-        android:label="fragment_pesan"
-        tools:layout="@layout/fragment_pesan" >
-        <argument android:name="kost_id_pesan"
+        android:label="Pesan Kost"
+        tools:layout="@layout/fragment_pesan">
+        <argument
+            android:name="kost_id_pesan"
             app:argType="integer" />
         <action
             android:id="@+id/action_pesanFragment_to_bayarFragment"
@@ -54,11 +40,42 @@
     <fragment
         android:id="@+id/bayarFragment"
         android:name="id.ac.ubaya.a160419107_ubayakost.view.bayarFragment"
-        android:label="fragment_bayar"
-        tools:layout="@layout/fragment_bayar" />
+        android:label="Bayar"
+        tools:layout="@layout/fragment_bayar" >
+        <action
+            android:id="@+id/action_bayarFragment_to_kostListFragment2"
+            app:destination="@id/itemListKostNav"
+            app:popUpTo="@id/itemListKostNav"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="kost_id_bayar"
+            app:argType="integer" />
+    </fragment>
     <fragment
-        android:id="@+id/itemCaraPakai"
+        android:id="@+id/itemProfileNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.profileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/itemContactUsNav"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.helpFragment"
+        android:label="Contact Us" />
+    <fragment
+        android:id="@+id/caraPakaiFragment"
         android:name="id.ac.ubaya.a160419107_ubayakost.view.caraPakaiFragment"
-        android:label="fragment_cara_pakai"
+        android:label="How To Use"
         tools:layout="@layout/fragment_cara_pakai" />
+    <fragment
+        android:id="@+id/itemFaq"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.faqFragment"
+        android:label="FAQ"
+        tools:layout="@layout/fragment_faq2" />
+    <fragment
+        android:id="@+id/itemFavorite"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.favoriteFragment"
+        android:label="favoriteFragment" >
+        <action
+            android:id="@+id/action_itemFavorite_to_kostDetailFragment"
+            app:destination="@id/kostDetailFragment" />
+    </fragment>
 </navigation>

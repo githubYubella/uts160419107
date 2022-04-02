@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/itemHomeNav"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/itemListKostNav"
         android:icon="@drawable/ic_baseline_format_list_bulleted_24"
         android:title="list"
@@ -18,13 +13,23 @@
         android:title="profile"
         app:showAsAction="always" />
     <item
-        android:id="@+id/itemHelpNav"
-        android:icon="@drawable/ic_baseline_help_24"
-        android:title="Help"
+        android:id="@+id/itemFavorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite"
         app:showAsAction="always" />
     <item
-        android:id="@+id/itemCaraPakai"
+        android:id="@+id/itemContactUsNav"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="Contact Us"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/caraPakaiFragment"
         android:icon="@drawable/ic_baseline_touch_app_24"
-        android:title="itemCaraPakai"
+        android:title="How To USE"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemFaq"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="FAQ"
         app:showAsAction="always" />
 </menu>

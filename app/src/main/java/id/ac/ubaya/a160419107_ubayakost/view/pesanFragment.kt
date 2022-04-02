@@ -11,6 +11,7 @@ import id.ac.ubaya.a160419107_ubayakost.R
 import id.ac.ubaya.a160419107_ubayakost.util.loadImage
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.DetailViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.PesanViewModel
+import kotlinx.android.synthetic.main.fragment_bayar.*
 import kotlinx.android.synthetic.main.fragment_kost_detail.*
 import kotlinx.android.synthetic.main.fragment_pesan.*
 
@@ -40,14 +41,7 @@ class pesanFragment : Fragment() {
 
 
         observeViewModel()
-//        arguments?.let {
-//            val namaKos= kostDetailFragmentArgs.fromBundle(requireArguments()).namaKos
-//            val harga = kostDetailFragmentArgs.fromBundle(requireArguments()).harga
-//            val id =  kostDetailFragmentArgs.fromBundle(requireArguments()).kostIdId
-//            txtId.text=id.toString()
-//            txtHarga.text =namaKos
-//            txtHarga.text=harga
-//        }
+
     }
 
     private fun observeViewModel() {
@@ -56,16 +50,14 @@ class pesanFragment : Fragment() {
             kost?.let {
                 txtHarga.setText(it.harga)
                 txtPesanNamaKos.setText(it.nama)
-
+                detailIdPesan.setText(it.id.toString())
 
             }
         }
 
         btnBayar.setOnClickListener {
-//            val builder = AlertDialog.Builder(context)
-//            builder.setTitle("Androidly Alert")
-//            builder.show()
-            val action = pesanFragmentDirections.actionPesanFragmentToBayarFragment()
+            val id = detailIdPesan.text.toString()
+            val action = pesanFragmentDirections.actionPesanFragmentToBayarFragment(id.toInt())
             Navigation.findNavController(it).navigate(action)
 
 
