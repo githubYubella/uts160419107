@@ -4,18 +4,18 @@ import com.google.gson.annotations.SerializedName
 
 data class KostUbaya(
     @SerializedName("id")
-    val id:Int?,
+    var id:Int?,
     @SerializedName("name")
-    val nama:String?,
+    var nama:String?,
     @SerializedName("jenis")
-    val jenis:String?,
+    var jenis:String?,
     @SerializedName("fasilitas")
-    val fasilitas:String?,
-    val alamat:String?,
+    var fasilitas:String?,
+    var alamat:String?,
     @SerializedName("harga")
-    val harga:String?,
+    var harga:String?,
     @SerializedName("photoUrl")
-    val photoUrl:String?,
-    val rekening:String?,
-    val atas_nama:String
+    var photoUrl:String?,
+    var rekening:String?,
+    var atas_nama:String
 )

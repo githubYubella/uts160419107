@@ -3,12 +3,13 @@ package id.ac.ubaya.a160419107_ubayakost.util
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.a160419107_ubayakost.R
 import java.lang.Exception
 
-fun ImageView.loadImage(url:String, progressBar: ProgressBar){
+fun ImageView.loadImage(url:String?, progressBar: ProgressBar){
     Picasso.get()
         .load(url)
         .resize(400,400)
@@ -25,4 +26,9 @@ fun ImageView.loadImage(url:String, progressBar: ProgressBar){
             }
 
         })
+}
+
+@BindingAdapter("android:imageUrl", "android:progreesBar")
+fun loadPhotoUrl(view: ImageView,url:String?, progressBar:ProgressBar){
+    view.loadImage(url,progressBar)
 }

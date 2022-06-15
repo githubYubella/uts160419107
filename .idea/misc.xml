@@ -40,6 +40,9 @@
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_bottom.xml" value="0.25416666666666665" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_navigation.xml" value="0.11458333333333333" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.124" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_kost_detail.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_kost_list.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/kost_list_item.xml" value="0.14130434782608695" />
       </map>
     </option>
   </component>
