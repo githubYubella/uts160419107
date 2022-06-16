@@ -9,6 +9,10 @@ plugins {
 android {
     compileSdk 31
 
+    dataBinding{
+        enabled true
+    }
+
     defaultConfig {
         applicationId "id.ac.ubaya.a160419107_ubayakost"
         minSdk 21
