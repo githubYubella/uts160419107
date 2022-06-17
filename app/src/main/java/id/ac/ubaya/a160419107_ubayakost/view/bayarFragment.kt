@@ -5,17 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.a160419107_ubayakost.R
+import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentBayarBinding
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.BayarViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.PesanViewModel
 import kotlinx.android.synthetic.main.fragment_bayar.*
 import kotlinx.android.synthetic.main.fragment_pesan.*
 
 
-class bayarFragment : Fragment() {
+class bayarFragment : Fragment(), ButtonBayarClickListener {
     private lateinit var viewModel: BayarViewModel
+    private lateinit var dataBinding:FragmentBayarBinding
 
 
     override fun onCreateView(
@@ -23,7 +26,8 @@ class bayarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bayar, container, false)
+         dataBinding = DataBindingUtil.inflate<FragmentBayarBinding>(inflater,R.layout.fragment_bayar, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,9 +38,10 @@ class bayarFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this).get(BayarViewModel::class.java)
         viewModel.fetchbayar(id)
-
+        dataBinding.bayarlistener = this
 
         observeViewModel()
+
 
 
         btnDone.setOnClickListener {
@@ -51,14 +56,15 @@ class bayarFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.bayarPesanLD.observe(viewLifecycleOwner) {
-            val kost = viewModel.bayarPesanLD.value
-            kost?.let {
-
-                textAtasNama.setText(it.atas_nama)
-                textRekening.setText(it.rekening)
-
-
-            }
+            dataBinding.kost = it
+//            val kost = viewModel.bayarPesanLD.value
+//            kost?.let {
+//
+//                textAtasNama.setText(it.atas_nama)
+//                textRekening.setText(it.rekening)
+//
+//
+//            }
         }
 
 //        btnBayar.setOnClickListener {
@@ -71,7 +77,12 @@ class bayarFragment : Fragment() {
 
 
     }
+
+    override fun onButtonBayarClickListener(v: View) {
+        val action = pesanFragmentDirections.actionPesanFragmentToBayarFragment(v.tag.toString().toInt())
+        Navigation.findNavController(v).navigate(action)
     }
+}
 
 
 

@@ -8,7 +8,9 @@
             name="kost"
             type="id.ac.ubaya.a160419107_ubayakost.model.KostUbaya" />
 
-        />
+        <variable
+            name="bayarlistener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.ButtonBayarClickListener" />
 
     </data>
 
