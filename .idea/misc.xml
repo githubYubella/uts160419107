@@ -25,10 +25,7 @@
         <entry key="..\:/6/ANMP/c3/app/src/main/res/layout/kost_list_item.xml" value="0.536" />
         <entry key="..\:/6/ANMP/c3/app/src/main/res/menu/menu_bottom.xml" value="0.11302083333333333" />
         <entry key="..\:/6/ANMP/c3/app/src/main/res/menu/menu_navigation.xml" value="0.25416666666666665" />
-        <entry key="..\:/6/ANMP/uas/app/src/main/res/layout/fragment_bayar.xml" value="0.19157608695652173" />
-        <entry key="..\:/6/ANMP/uas/app/src/main/res/layout/fragment_favorite.xml" value="0.19157608695652173" />
-        <entry key="..\:/6/ANMP/uas/app/src/main/res/layout/kost_list_item.xml" value="0.11302083333333333" />
-        <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.124" />
+in        <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.124" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2325" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/layout/activity_main.xml" value="0.20697463768115942" />
@@ -43,6 +40,12 @@
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_bottom.xml" value="0.25416666666666665" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/menu/menu_navigation.xml" value="0.11458333333333333" />
         <entry key="..\:/6/ANMP/uts2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.124" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_bayar.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_favorite.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_kost_detail.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/fragment_kost_list.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/layout/kost_list_item.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/patrick/uas160419107/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.131" />
       </map>
     </option>
   </component>
