@@ -32,8 +32,8 @@ class kostListFragment : Fragment(), RefreshClickListener{
         viewModel= ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
 
-        dataBinding!!.root.recyclerViewFav.layoutManager = LinearLayoutManager(context)
-        dataBinding!!.root.recyclerViewFav.adapter = kostListAdapter
+        dataBinding.recyclerViewFav.layoutManager = LinearLayoutManager(context)
+        dataBinding.recyclerViewFav.adapter = kostListAdapter
 
         dataBinding.refreshListener = this
 
@@ -53,25 +53,25 @@ class kostListFragment : Fragment(), RefreshClickListener{
             kostListAdapter.updateKostList(it)
         }
         viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-            dataBinding!!.root.textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
+            dataBinding.textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
         }
         viewModel.loadingLiveData.observe(viewLifecycleOwner){
             if(it){
-                dataBinding!!.root.recyclerViewFav.visibility = View.GONE
-                dataBinding!!.root.progressLoadFav.visibility = View.VISIBLE
+                dataBinding.recyclerViewFav.visibility = View.GONE
+                dataBinding.progressLoadFav.visibility = View.VISIBLE
 
             }
             else{
-                dataBinding!!.root.recyclerViewFav.visibility = View.VISIBLE
-                dataBinding!!.root.progressLoadFav.visibility = View.GONE
+                dataBinding.recyclerViewFav.visibility = View.VISIBLE
+                dataBinding.progressLoadFav.visibility = View.GONE
             }
         }
     }
 
     override fun onRefreshClick(v: View) {
-        dataBinding!!.root.recyclerViewFav.visibility = View.GONE
-        dataBinding!!.root.textErrorFav.visibility =View.GONE
-        dataBinding!!.root.progressLoadFav.visibility = View.VISIBLE
+        dataBinding.recyclerViewFav.visibility = View.GONE
+        dataBinding.textErrorFav.visibility =View.GONE
+        dataBinding.progressLoadFav.visibility = View.VISIBLE
         viewModel.refresh()
         v.refreshLayoutFav.isRefreshing = false
     }

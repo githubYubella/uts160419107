@@ -5,43 +5,49 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.a160419107_ubayakost.R
+import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentFavoriteBinding
+import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentKostListBinding
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.FavoriteViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
+import kotlinx.android.synthetic.main.fragment_kost_list.view.*
 
 
-class favoriteFragment : Fragment() {
+class favoriteFragment : Fragment(), RefreshClickListener {
 
     private lateinit var viewModel: FavoriteViewModel
     private val kostListAdapter = kostFavoriteAdapter(arrayListOf())
+    private lateinit var dataBinding: FragmentFavoriteBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentFavoriteBinding>(inflater, R.layout.fragment_favorite, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel= ViewModelProvider(this).get(FavoriteViewModel::class.java)
         viewModel.refresh()
 
-        recyclerViewFav.layoutManager = LinearLayoutManager(context)
-        recyclerViewFav.adapter = kostListAdapter
+        dataBinding.recyclerViewFav.layoutManager = LinearLayoutManager(context)
+        dataBinding.recyclerViewFav.adapter = kostListAdapter
 
         observeViewModel()
 
-        refreshLayoutFav.setOnClickListener {
-            recyclerViewFav.visibility = View.GONE
-            textErrorFav.visibility =View.GONE
-            progressLoadFav.visibility = View.VISIBLE
-            viewModel.refresh()
-            refreshLayoutFav.isRefreshing = false
-        }
+//        refreshLayoutFav.setOnClickListener {
+//            recyclerViewFav.visibility = View.GONE
+//            textErrorFav.visibility =View.GONE
+//            progressLoadFav.visibility = View.VISIBLE
+//            viewModel.refresh()
+//            refreshLayoutFav.isRefreshing = false
+//        }
     }
 
     private fun observeViewModel(){
@@ -49,19 +55,27 @@ class favoriteFragment : Fragment() {
             kostListAdapter.updateKostList(it)
         }
         viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner){
-            textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
+            dataBinding.textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
         }
         viewModel.loadingLiveData.observe(viewLifecycleOwner){
             if(it){
-                recyclerViewFav.visibility = View.GONE
-                progressLoadFav.visibility = View.VISIBLE
+                dataBinding.recyclerViewFav.visibility = View.GONE
+                dataBinding.progressLoadFav.visibility = View.VISIBLE
 
             }
             else{
-                recyclerViewFav.visibility = View.VISIBLE
-                progressLoadFav.visibility = View.GONE
+                dataBinding.recyclerViewFav.visibility = View.VISIBLE
+                dataBinding.progressLoadFav.visibility = View.GONE
             }
         }
+    }
+
+    override fun onRefreshClick(v: View) {
+        dataBinding.recyclerViewFav.visibility = View.GONE
+        dataBinding.textErrorFav.visibility =View.GONE
+        dataBinding.progressLoadFav.visibility = View.VISIBLE
+        viewModel.refresh()
+        v.refreshLayoutFav.isRefreshing = false
     }
 
 

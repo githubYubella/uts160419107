@@ -14,9 +14,6 @@ interface RefreshClickListener{
     fun onRefreshClick(v: View)
 }
 
-interface DoneClickListener{
-    fun onDoneButtonClick(v: View)
-}
 interface ButtonBayarClickListener{
     fun onButtonBayarClickListener(v: View)
 }

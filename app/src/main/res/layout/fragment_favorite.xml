@@ -5,10 +5,8 @@
 
     <data>
         <variable
-            name="kost"
-            type="id.ac.ubaya.a160419107_ubayakost.model.KostUbaya" />
-<!--        <variable-->
-<!--            name=/>-->
+            name="refreshListener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.RefreshClickListener" />
 
     </data>
 
@@ -20,7 +18,8 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayoutFav"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:onClick="@{refreshListener::onRefreshClick}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

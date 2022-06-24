@@ -18,15 +18,14 @@ import kotlinx.android.synthetic.main.fragment_pesan.*
 
 class bayarFragment : Fragment(), ButtonBayarClickListener {
     private lateinit var viewModel: BayarViewModel
-    private lateinit var dataBinding:FragmentBayarBinding
-
+    private lateinit var dataBinding: FragmentBayarBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-         dataBinding = DataBindingUtil.inflate<FragmentBayarBinding>(inflater,R.layout.fragment_bayar, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentBayarBinding>(inflater,R.layout.fragment_bayar, container, false)
         return dataBinding.root
     }
 
@@ -38,16 +37,16 @@ class bayarFragment : Fragment(), ButtonBayarClickListener {
         }
         viewModel = ViewModelProvider(this).get(BayarViewModel::class.java)
         viewModel.fetchbayar(id)
-        dataBinding.bayarlistener = this
+
+       dataBinding.bayarlistener = this
 
         observeViewModel()
 
 
-
-        btnDone.setOnClickListener {
-            val action = bayarFragmentDirections.actionBayarFragmentToKostListFragment2()
-            Navigation.findNavController(it).navigate(action)
-        }
+//        btnDone.setOnClickListener {
+//            val action = bayarFragmentDirections.actionBayarFragmentToKostListFragment2()
+//            Navigation.findNavController(it).navigate(action)
+//        }
 
 
 
@@ -79,7 +78,7 @@ class bayarFragment : Fragment(), ButtonBayarClickListener {
     }
 
     override fun onButtonBayarClickListener(v: View) {
-        val action = pesanFragmentDirections.actionPesanFragmentToBayarFragment(v.tag.toString().toInt())
+        val action = bayarFragmentDirections.actionBayarFragmentToKostListFragment2()
         Navigation.findNavController(v).navigate(action)
     }
 }
