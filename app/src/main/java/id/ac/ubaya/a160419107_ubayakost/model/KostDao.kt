@@ -13,6 +13,10 @@ interface KostDao {
     @Query("Select * from kostubaya")
     suspend fun selectAllKost(): List<KostUbaya>
 
+//  Select data kost yang terfavorit
+    @Query("SELECT * FROM kostubaya where isFavorite = 1")
+    suspend fun selectFavoriteKost(): List<KostUbaya>
+
 //    Select data kost untuk detail
     @Query("select * from kostubaya where uuid = :id")
     suspend fun selectSpesificKost(id:Int)
@@ -23,6 +27,10 @@ interface KostDao {
             "atas_nama= :atasNama, isFavorite= :favorite")
     suspend fun updateKost(nama:String, jenis:String, fasilitas:String, alamat:String, harga:Double,
                            foto:String, no_rek:String, atasNama:String, favorite:Int)
+
+//    Update status favorit pada kost
+    @Query("UPDATE kostubaya set isFavorite= :isfav WHERE uuid= :id")
+    suspend fun updateIsFavorite(isfav:Int ,id:Int)
 
 //    delete kost
     @Delete

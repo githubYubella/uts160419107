@@ -13,7 +13,8 @@ abstract class KostDatabase:RoomDatabase() {
     abstract fun kostDao(): KostDao
 
     companion object{
-        @Volatile private var instance: KostDatabase ?= null
+        @Volatile
+        private var instance: KostDatabase ?= null
         private val Lock = Any()
 
 //        buat database

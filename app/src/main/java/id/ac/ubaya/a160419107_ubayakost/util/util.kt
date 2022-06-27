@@ -35,16 +35,19 @@ fun ImageView.loadImage(url:String?, progressBar: ProgressBar){
         })
 }
 
-fun buildDatabase(context: Context)= Room.databaseBuilder(
-    context.applicationContext, KostDatabase::class.java, db_name
-).build()
+fun buildDatabase(context: Context):KostDatabase{
+   val db = Room.databaseBuilder(
+       context, KostDatabase::class.java, db_name
+   ).build()
+
+    return db
+}
 //builDatabase ini juga perlu ditambahkan migration
-//        private fun buildDatabase(context: Context) =
-//            Room.databaseBuilder(
-//                context.applicationContext,
-//                TodoDatabase::class.java,
-//                "kostdb"
-//            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build()
+
+//fun buildDb(context: Context):UbayaKostDatabase{
+//    val db = Room.databaseBuilder(context, UbayaKostDatabase::class.java, DB_NAME).addMigrations(MIGRATION_1_2).build()
+//    return db
+//}
 
 //contoh ingin menambahkan migration berupa pembuatan tabel pengguna
 //val MIGRATION_1_2 =object : Migration(1,2){

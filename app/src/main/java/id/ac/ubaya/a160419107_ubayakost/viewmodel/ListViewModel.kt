@@ -40,6 +40,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
             val db = buildDatabase(getApplication())
 
             kostLiveData.value = db.kostDao().selectAllKost()
+            loadingLiveData.value=false
         }
 //        queue = Volley.newRequestQueue(getApplication())
 //        val url = "https://ubaya.fun/hybrid/160419107/anmp/listKost.php"
@@ -70,7 +71,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
 //
 //    }
 
-    fun AddKost(listkost: List<KostUbaya>){
+    fun addKost(listkost: List<KostUbaya>){
         launch {
             val db = buildDatabase(getApplication())
 
@@ -78,9 +79,13 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         }
     }
 
+    fun clearTask(kost:KostUbaya) {
+        launch {
+            val db = buildDatabase(getApplication())
 
-//
-
-
+            db.kostDao().deleteKost(kost)
+            kostLiveData.value = db.kostDao().selectAllKost()
+        }
+    }
 }
 
