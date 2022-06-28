@@ -25,7 +25,6 @@ data class KostUbaya(
     var atas_nama:String,
     @ColumnInfo(name="isFavorite")
     var isFavorite:Int = 0
-    ){
-    @PrimaryKey(autoGenerate = true)
+    ){  @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0
 }
