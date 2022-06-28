@@ -1,5 +1,6 @@
 package id.ac.ubaya.a160419107_ubayakost.model
 
+import Tanggal
 import androidx.room.*
 
 //Membuat method seperti insert, update, delete
@@ -35,4 +36,10 @@ interface KostDao {
 //    delete kost
     @Delete
     suspend fun deleteKost(kostUbaya: KostUbaya)
+
+// insert tanggal
+@Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTanggal(vararg tanggal: Tanggal)
+
+
 }
