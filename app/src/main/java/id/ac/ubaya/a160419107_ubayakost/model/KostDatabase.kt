@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 //Kalau ditambahkan migration jangan lupa versinya dinaikkan
 //contoh versinya menjadi 2 dan untuk menambahkan tabel lagi seperti berikut
 //@Database(entities = [KostUbaya::class, PenggunaKost::class], version =  2)
-@Database(entities = arrayOf(KostUbaya::class), version = 1)
+@Database(entities = arrayOf(KostUbaya::class), version = 2)
 abstract class KostDatabase:RoomDatabase() {
     abstract fun kostDao(): KostDao
 
