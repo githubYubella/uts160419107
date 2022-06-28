@@ -1,21 +1,31 @@
 package id.ac.ubaya.a160419107_ubayakost.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class KostUbaya(
-    @SerializedName("id")
-    var id:Int?,
-    @SerializedName("name")
-    var nama:String?,
-    @SerializedName("jenis")
-    var jenis:String?,
-    @SerializedName("fasilitas")
-    var fasilitas:String?,
-    var alamat:String?,
-    @SerializedName("harga")
-    var harga:String?,
-    @SerializedName("photoUrl")
-    var photoUrl:String?,
-    var rekening:String?,
-    var atas_nama:String
-)
+    @ColumnInfo(name="name")
+    var nama:String,
+    @ColumnInfo(name="jenis")
+    var jenis:String,
+    @ColumnInfo(name="fasilitas")
+    var fasilitas:String,
+    @ColumnInfo(name="alamat")
+    var alamat:String,
+    @ColumnInfo(name="harga")
+    var harga:Double,
+    @ColumnInfo(name="photoUrl")
+    var photoUrl:String,
+    @ColumnInfo(name="rekening")
+    var rekening:String,
+    @ColumnInfo(name="atas_nama")
+    var atas_nama:String,
+    @ColumnInfo(name="isFavorite")
+    var isFavorite:Int = 0
+    ){
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int = 0
+}
