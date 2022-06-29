@@ -12,6 +12,12 @@
         <action
             android:id="@+id/actionItemListKostToKostDetailFragment"
             app:destination="@id/kostDetailFragment" />
+        <action
+            android:id="@+id/actionListLogin"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/actionInputKost"
+            app:destination="@id/inputKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/kostDetailFragment"
@@ -77,5 +83,31 @@
         <action
             android:id="@+id/action_itemFavorite_to_kostDetailFragment"
             app:destination="@id/kostDetailFragment" />
+        <action
+            android:id="@+id/actionFavoriteLogin"
+            app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.loginFragment"
+        android:label="loginFragment" >
+        <action
+            android:id="@+id/actionRegisterFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/actionLoginListKostNav"
+            app:destination="@id/itemListKostNav" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.registerFragment"
+        android:label="registerFragment" >
+        <action
+            android:id="@+id/actionRegisterLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputKostFragment"
+        android:name="id.ac.ubaya.a160419107_ubayakost.view.InputKostFragment"
+        android:label="InputKostFragment" />
 </navigation>

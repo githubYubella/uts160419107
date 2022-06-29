@@ -1,6 +1,5 @@
 package id.ac.ubaya.a160419107_ubayakost.model
 
-import Tanggal
 import androidx.room.*
 
 //Membuat method seperti insert, update, delete
@@ -19,27 +18,22 @@ interface KostDao {
     suspend fun selectFavoriteKost(): List<KostUbaya>
 
 //    Select data kost untuk detail
-    @Query("select * from kostubaya where uuid = :id")
-    suspend fun selectSpesificKost(id:Int)
+    @Query("select * from kostubaya where id = :id")
+    suspend fun selectSpesificKost(id:Int):KostUbaya
 
 //    Update data kost
     @Query("update kostubaya set name= :nama, jenis= :jenis, " +
             "fasilitas= :fasilitas, alamat=:alamat, harga= :harga, photoUrl=:foto, rekening=:no_rek," +
-            "atas_nama= :atasNama, isFavorite= :favorite")
-    suspend fun updateKost(nama:String, jenis:String, fasilitas:String, alamat:String, harga:Double,
-                           foto:String, no_rek:String, atasNama:String, favorite:Int)
+            "atas_nama= :atasNama where id= :uuid")
+    suspend fun updateKost(nama:String, jenis:String, fasilitas:String, alamat:String, harga:String,
+                           foto:String, no_rek:String, atasNama:String, uuid:Int)
 
 //    Update status favorit pada kost
-    @Query("UPDATE kostubaya set isFavorite= :isfav WHERE uuid= :id")
+    @Query("UPDATE kostubaya set isFavorite= :isfav WHERE id= :id")
     suspend fun updateIsFavorite(isfav:Int ,id:Int)
 
 //    delete kost
     @Delete
     suspend fun deleteKost(kostUbaya: KostUbaya)
-
-// insert tanggal
-@Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTanggal(vararg tanggal: Tanggal)
-
 
 }
