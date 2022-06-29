@@ -38,9 +38,28 @@ fun ImageView.loadImage(url:String?, progressBar: ProgressBar){
 fun buildDatabase(context: Context):KostDatabase{
    val db = Room.databaseBuilder(
        context, KostDatabase::class.java, db_name
-   ).build()
+   ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
 
     return db
+}
+
+val MIGRATION_1_2 =object : Migration(1,2){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE penggunakost (id INTEGER PRIMARY KEY NOT NULL, nama TEXT, email TEXT," +
+                    " telepon TEXT, username TEXT, password TEXT, peran TEXT)"
+        )
+
+    }
+}
+
+val MIGRATION_2_3 =object : Migration(2,3){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE transaksikost (id INTEGER PRIMARY KEY NOT NULL,tanggal INTEGER, idKost INTEGER, username TEXT)"
+        )
+
+    }
 }
 //builDatabase ini juga perlu ditambahkan migration
 

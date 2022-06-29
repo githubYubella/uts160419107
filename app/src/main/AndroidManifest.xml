@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/iconkost"
         android:theme="@style/Theme.160419107_UbayaKost"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".view.inputKost"
-            android:exported="false" />
+
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

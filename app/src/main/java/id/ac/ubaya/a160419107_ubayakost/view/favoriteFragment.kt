@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.a160419107_ubayakost.R
 import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentFavoriteBinding
 import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentKostListBinding
+import id.ac.ubaya.a160419107_ubayakost.util.preferencesHelper
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.FavoriteViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_kost_list.*
@@ -22,6 +25,8 @@ class favoriteFragment : Fragment(), RefreshClickListener {
     private lateinit var viewModel: FavoriteViewModel
     private val kostListAdapter = kostFavoriteAdapter(arrayListOf())
     private lateinit var dataBinding: FragmentFavoriteBinding
+
+    private lateinit var sph: preferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,8 @@ class favoriteFragment : Fragment(), RefreshClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel= ViewModelProvider(this).get(FavoriteViewModel::class.java)
         viewModel.refresh()
+
+        sph = preferencesHelper(requireActivity())
 
         dataBinding.recyclerViewFav.layoutManager = LinearLayoutManager(context)
         dataBinding.recyclerViewFav.adapter = kostListAdapter
@@ -78,5 +85,14 @@ class favoriteFragment : Fragment(), RefreshClickListener {
         v.refreshLayoutFav.isRefreshing = false
     }
 
+    override fun onStart() {
+        super.onStart()
 
+        if(!sph.getBoolean()){
+            val action = favoriteFragmentDirections.actionFavoriteLogin()
+            Navigation.findNavController(requireView()).navigate(action)
+
+        }
+
+    }
 }

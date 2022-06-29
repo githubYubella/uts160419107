@@ -12,7 +12,7 @@ import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentProfileBinding
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.ProfilViewModel
 
 
-class profileFragment : Fragment(), ButtonBayarClickListener {
+class profileFragment : Fragment(){
     private lateinit var viewModel: ProfilViewModel
     private lateinit var dataBinding: FragmentProfileBinding
 
@@ -34,13 +34,12 @@ class profileFragment : Fragment(), ButtonBayarClickListener {
         viewModel = ViewModelProvider(this).get(ProfilViewModel::class.java)
         viewModel.fetchProfil("s160419107@student.ubaya.ac.id")
 
-        dataBinding.profilelistener = this
         observeViewModel()
     }
 
     private fun observeViewModel(){
         viewModel.profilLD.observe(viewLifecycleOwner) {
-            dataBinding.kost = it
+            dataBinding.user = it
 //            val kost = viewModel.profilLD.value
 //            kost?.let {
 //                txtProfilNama.setText(it.name)
@@ -49,14 +48,8 @@ class profileFragment : Fragment(), ButtonBayarClickListener {
 //                photoProfil.loadImage(it.photo.toString(), progressBarProfil)
 
 
-            }
-
-
-
         }
 
-    override fun onButtonBayarClickListener(v: View) {
-        TODO("Not yet implemented")
     }
 
 

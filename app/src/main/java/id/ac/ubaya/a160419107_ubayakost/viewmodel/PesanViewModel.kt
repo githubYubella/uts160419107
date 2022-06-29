@@ -11,40 +11,66 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.a160419107_ubayakost.model.KostUbaya
+import id.ac.ubaya.a160419107_ubayakost.model.TransaksiKost
+import id.ac.ubaya.a160419107_ubayakost.util.buildDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class PesanViewModel (application: Application): AndroidViewModel(application) {
+class PesanViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
     val kostLDPesan = MutableLiveData<KostUbaya>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue?=null
+//    val TAG = "volleyTag"
+//    private var queue: RequestQueue?=null
 
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     fun fetchPesan(id: Int){
-        queue =  Volley.newRequestQueue(getApplication())
-        val url = "https://ubaya.fun/hybrid/160419107/anmp/listKost.php"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {   response ->
-//
-                val sType = object  : TypeToken<ArrayList<KostUbaya>>(){}.type
-                val result = Gson().fromJson<ArrayList<KostUbaya>>(response, sType)
-//                val result = Gson().fromJson<KostUbaya>(response, KostUbaya::class.java)
-
-                for(data in result){
-                    if(data.id == id){
-                        kostLDPesan.value= data
-                    }
-                }
-                Log.d("showvolley", response.toString())
-            },
-            {
-                Log.d("errorvolley", it.toString())
-            }
-        ).apply {
-            tag = "TAG"
+        launch {
+            val db = buildDatabase(getApplication())
+            kostLDPesan.value = db.kostDao().selectSpesificKost(id)
         }
-        queue?.add(stringRequest)
-
-
+//        queue =  Volley.newRequestQueue(getApplication())
+//        val url = "https://ubaya.fun/hybrid/160419107/anmp/listKost.php"
+//
+//        val stringRequest = StringRequest(
+//            Request.Method.GET, url,
+//            {   response ->
+////
+//                val sType = object  : TypeToken<ArrayList<KostUbaya>>(){}.type
+//                val result = Gson().fromJson<ArrayList<KostUbaya>>(response, sType)
+////                val result = Gson().fromJson<KostUbaya>(response, KostUbaya::class.java)
+//
+//                for(data in result){
+//                    if(data.id == id){
+//                        kostLDPesan.value= data
+//                    }
+//                }
+//                Log.d("showvolley", response.toString())
+//            },
+//            {
+//                Log.d("errorvolley", it.toString())
+//            }
+//        ).apply {
+//            tag = "TAG"
+//        }
+//        queue?.add(stringRequest)
+//
+//
     }
+
+    fun addTransaction(listTransaksi: List<TransaksiKost>){
+        launch {
+            val db = buildDatabase(getApplication())
+
+            db.transaksiDao().insertTanggal(*listTransaksi.toTypedArray())
+
+            Log.d("Data Transaksi :",listTransaksi.toString())
+        }
+    }
+
 }

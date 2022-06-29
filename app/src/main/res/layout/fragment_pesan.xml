@@ -9,8 +9,16 @@
             type="id.ac.ubaya.a160419107_ubayakost.model.KostUbaya" />
 
         <variable
+            name="transaksi"
+            type="id.ac.ubaya.a160419107_ubayakost.model.TransaksiKost" />
+
+        <variable
             name="pesanlistener"
             type="id.ac.ubaya.a160419107_ubayakost.view.ButtonBayarClickListener" />
+
+        <variable
+            name="tanggalListener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.ButtonDateClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,16 +28,16 @@
         android:scrollbarSize="20dp"
         tools:context=".view.pesanFragment">
 
-        <TextView
-            android:id="@+id/detailIdPesan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="604dp"
-            android:text="TextView"
-            android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/detailIdPesan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="32dp"-->
+<!--            android:layout_marginTop="604dp"-->
+<!--            android:text="TextView"-->
+<!--            android:visibility="invisible"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/imageView2"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/textView6"
@@ -59,7 +67,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtPesanTanggal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:focusable="false"
+                android:onClick="@{tanggalListener::onButtonDateClick}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -69,6 +80,8 @@
             android:layout_marginTop="68dp"
             android:layout_marginEnd="32dp"
             android:text="Bayar"
+            android:tag="@{kost.id}"
+            android:onClick="@{pesanlistener::onButtonBayarClickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtHarga" />
 
@@ -99,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="68dp"
             android:layout_marginEnd="52dp"
-            android:text="Harga"
+            android:text="@{kost.harga}"
             android:textSize="20dp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"

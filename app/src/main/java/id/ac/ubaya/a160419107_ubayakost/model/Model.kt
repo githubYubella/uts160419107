@@ -16,7 +16,7 @@ data class KostUbaya(
     @ColumnInfo(name="alamat")
     var alamat:String,
     @ColumnInfo(name="harga")
-    var harga:Double,
+    var harga:String,
     @ColumnInfo(name="photoUrl")
     var photoUrl:String,
     @ColumnInfo(name="rekening")
@@ -26,5 +26,5 @@ data class KostUbaya(
     @ColumnInfo(name="isFavorite")
     var isFavorite:Int = 0
     ){  @PrimaryKey(autoGenerate = true)
-    var uuid:Int = 0
+    var id:Int = 0
 }

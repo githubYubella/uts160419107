@@ -11,6 +11,18 @@
         <variable
             name="pesanlistener"
             type="id.ac.ubaya.a160419107_ubayakost.view.ButtonPesanClickListener" />
+
+        <variable
+            name="imageListener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.FavoriteButtonListener" />
+
+        <variable
+            name="saveListener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.SaveChangesListener" />
+
+        <variable
+            name="updateListener"
+            type="id.ac.ubaya.a160419107_ubayakost.view.UpdateButtonListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,8 +76,7 @@
                         android:id="@+id/detailNamaKos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:inputType="text"
                         android:text="@={kost.nama}"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -85,8 +96,7 @@
                         android:id="@+id/detailJenis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:inputType="text"
                         android:text="@={kost.jenis}"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -106,8 +116,7 @@
                         android:id="@+id/detailFasilitas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:inputType="text"
                         android:text="@={kost.fasilitas}"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -127,8 +136,7 @@
                         android:id="@+id/detailAlamat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"
+                        android:enabled="false"
                         android:inputType="text"
                         android:text="@={kost.alamat}"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -148,18 +156,41 @@
                         android:id="@+id/detailHarga"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"/>
+                        android:enabled="false"
+                        android:inputType="number"
+                        android:text="@={kost.harga}"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout6"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="link foto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/detailUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:visibility="gone"
+                        android:inputType="textUri"
+                        android:text="@={kost.photoUrl}"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/buttonSimpan"
+                    android:id="@+id/buttonPesan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Simpan"
+                    android:text="Pesan"
+                    android:tag="@{kost.id}"
                     android:onClick="@{pesanlistener::onButtonPesanClick}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
                 <ProgressBar
                     android:id="@+id/progressBarDetail"
@@ -188,17 +219,42 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:text="EDIT"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonSimpan"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+                    android:onClick="@{updateListener::onUpdateButton}"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonPesan"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:visibility="gone"
+                    android:text="SIMPAN"
+                    android:onClick="@{(view) -> saveListener.onSaveButton(view, kost)}"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonPesan"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
                 <ImageView
                     android:id="@+id/buttonFavorite"
                     android:layout_width="53dp"
                     android:layout_height="49dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout5"
-                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+                    android:layout_marginStart="16dp"
+                    android:background="@{kost.isFavorite == 0 ? @drawable/favorite_image_not_selected : @drawable/favorite_image_selected}"
+                    android:onClick="@{imageListener::onFavoriteImgClick}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+                <ToggleButton
+                    android:id="@+id/toggleFavorite"
+                    android:layout_width="53dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@{kost.isFavorite == 0 ? @drawable/favorite_image_not_selected : @drawable/favorite_image_selected}"
+                    android:onClick="@{imageListener::onFavoriteImgClick}"
+                    android:textOff=""
+                    android:textOn=""
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonFavorite" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

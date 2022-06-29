@@ -10,14 +10,27 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import id.ac.ubaya.a160419107_ubayakost.model.PenggunaKost
 
 import id.ac.ubaya.a160419107_ubayakost.model.ProfilUser
+import id.ac.ubaya.a160419107_ubayakost.util.buildDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ProfilViewModel (application: Application): AndroidViewModel(application) {
+class ProfilViewModel (application: Application): AndroidViewModel(application), CoroutineScope {
 
     val profilLD = MutableLiveData<ProfilUser>()
     val TAG = "volleyTag"
     private var queue: RequestQueue?=null
+
+    val penggunaLD = MutableLiveData<PenggunaKost>()
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
 
     fun fetchProfil(email: String){
@@ -46,6 +59,40 @@ class ProfilViewModel (application: Application): AndroidViewModel(application) 
         }
         queue?.add(stringRequest)
 
+
+    }
+
+
+    fun addUser(list: List<PenggunaKost>){
+        launch{
+
+            val db = buildDatabase(getApplication())
+
+            db.userDao().insertUserKost(*list.toTypedArray())
+
+        }
+
+    }
+
+    fun validation(user:String, pass:String){
+
+        launch {
+            val db = buildDatabase(getApplication())
+
+            penggunaLD.value =
+                db.userDao().selectUser(user, pass)
+        }
+
+    }
+
+    fun peran(user:String){
+
+        launch {
+            val db = buildDatabase(getApplication())
+
+            penggunaLD.value = db.userDao().selectSpesificUser(user)
+
+        }
 
     }
 }
