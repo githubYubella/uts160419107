@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.a160419107_ubayakost.R
 import id.ac.ubaya.a160419107_ubayakost.databinding.FragmentBayarBinding
+import id.ac.ubaya.a160419107_ubayakost.util.NotificationHelper
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.BayarViewModel
 import id.ac.ubaya.a160419107_ubayakost.viewmodel.PesanViewModel
 import kotlinx.android.synthetic.main.fragment_bayar.*
@@ -73,11 +74,16 @@ class bayarFragment : Fragment(), ButtonBayarClickListener {
 //
 //
 //        }
+//        btnBayar.setOnClickListener {
+//
+//        }
 
 
     }
 
     override fun onButtonBayarClickListener(v: View) {
+        NotificationHelper(v.context).createNotification("Reminder",
+            "Jangan lupa bayar")
         val action = bayarFragmentDirections.actionBayarFragmentToKostListFragment2()
         Navigation.findNavController(v).navigate(action)
     }
