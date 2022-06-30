@@ -82,10 +82,11 @@ class bayarFragment : Fragment(), ButtonBayarClickListener {
     }
 
     override fun onButtonBayarClickListener(v: View) {
-        NotificationHelper(v.context).createNotification("Reminder",
-            "Jangan lupa bayar")
         val action = bayarFragmentDirections.actionBayarFragmentToKostListFragment2()
         Navigation.findNavController(v).navigate(action)
+
+        NotificationHelper(v.context).createNotification("Reminder",
+            "Jangan lupa bayar")
     }
 }
 

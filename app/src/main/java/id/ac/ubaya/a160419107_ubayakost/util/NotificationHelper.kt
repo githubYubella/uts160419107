@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import id.ac.ubaya.a160419107_ubayakost.R
 import id.ac.ubaya.a160419107_ubayakost.view.MainActivity
 
 class NotificationHelper(val context:Context) {
@@ -37,6 +38,7 @@ class NotificationHelper(val context:Context) {
 
         val pendingIntent = PendingIntent.getActivity(context,0,intent,0)
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.mipmap.iconkost)
             .setContentTitle(title)
             .setContentText(message)
             .setContentIntent(pendingIntent)
