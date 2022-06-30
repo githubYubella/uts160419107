@@ -109,7 +109,7 @@ class kostDetailFragment : Fragment(),ButtonPesanClickListener, FavoriteButtonLi
 
             if(role!!.peran == "Pemilik"){
                 dataBinding.root.buttonPesan.visibility = View.GONE
-                dataBinding.root.buttonFavorite.visibility = View.GONE
+//                dataBinding.root.buttonFavorite.visibility = View.GONE
                 dataBinding.root.toggleFavorite.visibility = View.GONE
             }
             else{

@@ -234,15 +234,15 @@
                     app:layout_constraintEnd_toStartOf="@+id/buttonPesan"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
-                <ImageView
-                    android:id="@+id/buttonFavorite"
-                    android:layout_width="53dp"
-                    android:layout_height="49dp"
-                    android:layout_marginStart="16dp"
-                    android:background="@{kost.isFavorite == 0 ? @drawable/favorite_image_not_selected : @drawable/favorite_image_selected}"
-                    android:onClick="@{imageListener::onFavoriteImgClick}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/buttonFavorite"-->
+<!--                    android:layout_width="53dp"-->
+<!--                    android:layout_height="49dp"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:background="@{kost.isFavorite == 0 ? @drawable/favorite_image_not_selected : @drawable/favorite_image_selected}"-->
+<!--                    android:onClick="@{imageListener::onFavoriteImgClick}"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />-->
 
                 <ToggleButton
                     android:id="@+id/toggleFavorite"
@@ -254,7 +254,7 @@
                     android:textOff=""
                     android:textOn=""
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buttonFavorite" />
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
